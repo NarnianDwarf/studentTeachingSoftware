@@ -1,4 +1,4 @@
 from django.contrib import admin
-
+from .models import firstEvaluation
 # Register your models here.
-#I created superusers cooney, murrow, and peters.  It should work?
+admin.site.register(firstEvaluation)
