@@ -40,4 +40,5 @@ class firstQuestionsForm(forms.Form):
     question19 = forms.ChoiceField(label="Collaboration", choices = QUESTION_CHOICES)
     question20 = forms.ChoiceField(label="Advocacy to Meet the Needs of Learners or for the Teaching Profession", choices = QUESTION_CHOICES)
     question21 = forms.ChoiceField(label="Responds Positively to Feedback and Constructive Criticism", choices = QUESTION_CHOICES)
-    # At the end of the form, there is a blank box asking for what went well and areas of strength which I did not include here.
+    
+    comment = forms.CharField(label="What went well? Areas of strength?", max_length = 1000)
