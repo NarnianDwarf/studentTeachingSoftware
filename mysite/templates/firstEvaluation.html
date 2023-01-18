@@ -6,6 +6,8 @@
     <form action="/firstEvaluation/" method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit", name="save">Save Evaluation</button>
+        <a href="firstEvaluation/questions/">
+            <button type="submit", name="save">Save Evaluation</button>
+        </a>
     </form>
 </html>

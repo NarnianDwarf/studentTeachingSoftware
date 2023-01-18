@@ -6,6 +6,10 @@ class firstEvaluationForm(forms.Form):
     student_id = forms.IntegerField(required = True, label="Student ID")
 
 class firstQuestionsForm(forms.Form):
+    first_name = forms.CharField(label="First Name", max_length = 200)
+    last_name = forms.CharField(label="Last Name", max_length = 200)
+    student_id = forms.IntegerField(required = True, label="Student ID")
+
     EXCEEDS = 3
     MEETS = 2
     EMERGING = 1

@@ -16,7 +16,7 @@ def evaluationPage(response):
             t = firstEvaluation(first_name = fn, last_name = ln, student_id = sid)
             t.save()
         
-        return render(response, "submissionSuccess.html")
+        return render(response, "evalQuestions.html", {"form":form})
     else:
         form = firstEvaluationForm()
     return render(response, "firstEvaluation.html", {"form":form})
@@ -29,6 +29,9 @@ def questionsPage(response):
         form = firstQuestionsForm(response.POST)
 
         if form.is_valid():
+            fn = form.cleaned_data["first_name"]
+            ln = form.cleaned_data["last_name"]
+            sid = form.cleaned_data['student_id']
             q1 = form.cleaned_data['question1']
             q2 = form.cleaned_data['question2']
             q3 = form.cleaned_data['question3']
@@ -51,7 +54,7 @@ def questionsPage(response):
             q20 = form.cleaned_data['question20']
             q21 = form.cleaned_data['question21']
             com = form.cleaned_data["comment"]
-            q.firstQuestions(question1 = q1, question2 = q2, question3 = q3, question4 = q4, question5 = q5, question6 = q6, question7 = q7, question8 = q8, question9 = q9, question10 = q10, question11 = q11, question12 = q12, question13 = q13, question14 = q14, question15 = q15, question16 = q16, question17 = q17, question18 = q18, question19 = q19, question20 = q20, question21 = q21, comment = com)
+            q.firstQuestion(first_name = fn, last_name = ln, student_id = sid, question1 = q1, question2 = q2, question3 = q3, question4 = q4, question5 = q5, question6 = q6, question7 = q7, question8 = q8, question9 = q9, question10 = q10, question11 = q11, question12 = q12, question13 = q13, question14 = q14, question15 = q15, question16 = q16, question17 = q17, question18 = q18, question19 = q19, question20 = q20, question21 = q21, comment = com)
             q.save()
         
         return render(response, "submissionSuccess.html")
