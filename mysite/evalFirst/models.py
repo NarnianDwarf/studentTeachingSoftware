@@ -13,8 +13,8 @@ class firstEvaluation(models.Model):
 class firstQuestions(models.Model):
     # firstEvaluation = models.ForeignKey(firstEvaluation, on_delete=models.CASCADE)
     # question1 = forms.ModelChoiceField(queryset=['Below', 'Average', 'Above'])
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200, default = "enter_a_first_name")
+    last_name = models.CharField(max_length=200, default = "enter_a_last_name")
     student_id = models.IntegerField(default=0)
 
     EXCEEDS = 3
