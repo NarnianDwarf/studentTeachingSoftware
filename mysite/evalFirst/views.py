@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import loader
 from django.http import HttpResponse
 from .forms import firstEvaluationForm, firstQuestionsForm
 from .models import firstEvaluation, firstQuestions
@@ -62,3 +63,11 @@ def questionsPage(response):
         form = firstQuestionsForm()
     return render(response, "evalQuestions.html", {"form":form})
     # return render(response, "evalQuestions.html", {"q":q})
+
+def listOfEvals(request):
+    all_evaluations = firstEvaluation.objects.all()
+    template = loader.get_template('/evalList.html')
+    context = {
+        'all_evaluations' : all_evaluations,
+    }
+    return HttpResponse(template.render(context, request))

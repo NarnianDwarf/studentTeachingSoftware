@@ -1,0 +1,13 @@
+{% if all_evaluations %}
+
+    <ul>
+        {% for eval in all_evaluations %}
+        <li><a href="/evalFirst/{{ firstEvaluation.id }}/">{{ firstEvalution.student_id }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <h3>You don't have any Evaluations.</h3>
+
+{% endif %}

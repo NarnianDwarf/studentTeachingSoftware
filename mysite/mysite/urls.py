@@ -20,4 +20,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('firstEvaluation/', include('evalFirst.urls')),
     path('admin/', admin.site.urls),
+    path('list/trying', include('evalFirst.urls')),
 ]
