@@ -1,68 +1,46 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from .forms import firstEvaluationForm, firstQuestionsForm
-from .models import firstEvaluation, firstQuestions
+from .forms import firstEvaluationForm
+from .models import firstEvaluation
 
 # Create your views here.
 
 def evaluationPage(response):
     if response.method == "POST":
         form = firstEvaluationForm(response.POST)
-
         if form.is_valid():
-            fn = form.cleaned_data["first_name"]
-            ln = form.cleaned_data["last_name"]
-            sid = form.cleaned_data['student_id']
-            t = firstEvaluation(first_name = fn, last_name = ln, student_id = sid)
-            t.save()
-        
-        return render(response, "evalQuestions.html", {"form":form})
+            f = form.cleaned_data["fname"]
+            l = form.cleaned_data["lname"]
+            s = form.cleaned_data['stud_id']
+            q1a = form.cleaned_data['question1a']
+            q1b = form.cleaned_data['question1b']
+            q1c = form.cleaned_data['question1c']
+            q1d = form.cleaned_data['question1d']
+            q2e = form.cleaned_data['question2e']
+            q2f = form.cleaned_data['question2f']
+            q2g = form.cleaned_data['question2g']
+            q2h = form.cleaned_data['question2h']
+            q2i = form.cleaned_data['question2i']
+            q3j = form.cleaned_data['question3j']
+            q3k = form.cleaned_data['question3k']
+            q3l = form.cleaned_data['question3l']
+            q4m = form.cleaned_data['question4m']
+            q5a = form.cleaned_data['question5a']
+            q5b = form.cleaned_data['question5b']
+            q5c = form.cleaned_data['question5c']
+            q5d = form.cleaned_data['question5d']
+            q5e = form.cleaned_data['question5e']
+            q6f = form.cleaned_data['question6f']
+            q6g = form.cleaned_data['question6g']
+            q7h = form.cleaned_data['question7h']
+            com = form.cleaned_data["comment"]
+            q.firstEvaluation(fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com)
+            q.save()
+        return render(response, "submissionSuccess.html", {"form":form})
     else:
         form = firstEvaluationForm()
     return render(response, "firstEvaluation.html", {"form":form})
-
-# def questionsPage(response, id):
-def questionsPage(response):
-    # q = firstEvaluation.objects.get(id=id)
-
-    if response.method == "POST":
-        form = firstQuestionsForm(response.POST)
-
-        if form.is_valid():
-            fn = form.cleaned_data["first_name"]
-            ln = form.cleaned_data["last_name"]
-            sid = form.cleaned_data['student_id']
-            q1 = form.cleaned_data['question1']
-            q2 = form.cleaned_data['question2']
-            q3 = form.cleaned_data['question3']
-            q4 = form.cleaned_data['question4']
-            q5 = form.cleaned_data['question5']
-            q6 = form.cleaned_data['question6']
-            q7 = form.cleaned_data['question7']
-            q8 = form.cleaned_data['question8']
-            q9 = form.cleaned_data['question9']
-            q10 = form.cleaned_data['question10']
-            q11 = form.cleaned_data['question11']
-            q12 = form.cleaned_data['question12']
-            q13 = form.cleaned_data['question13']
-            q14 = form.cleaned_data['question14']
-            q15 = form.cleaned_data['question15']
-            q16 = form.cleaned_data['question16']
-            q17 = form.cleaned_data['question17']
-            q18 = form.cleaned_data['question18']
-            q19 = form.cleaned_data['question19']
-            q20 = form.cleaned_data['question20']
-            q21 = form.cleaned_data['question21']
-            com = form.cleaned_data["comment"]
-            q.firstQuestion(first_name = fn, last_name = ln, student_id = sid, question1 = q1, question2 = q2, question3 = q3, question4 = q4, question5 = q5, question6 = q6, question7 = q7, question8 = q8, question9 = q9, question10 = q10, question11 = q11, question12 = q12, question13 = q13, question14 = q14, question15 = q15, question16 = q16, question17 = q17, question18 = q18, question19 = q19, question20 = q20, question21 = q21, comment = com)
-            q.save()
-        
-        return render(response, "submissionSuccess.html")
-    else:
-        form = firstQuestionsForm()
-    return render(response, "evalQuestions.html", {"form":form})
-    # return render(response, "evalQuestions.html", {"q":q})
 
 def listOfEvals(request):
     all_evaluations = firstEvaluation.objects.all()
