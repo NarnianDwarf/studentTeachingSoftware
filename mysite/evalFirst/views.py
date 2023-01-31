@@ -44,7 +44,7 @@ def evaluationPage(response):
 
 def listOfEvals(request):
     all_evaluations = firstEvaluation.objects.all()
-    template = loader.get_template('/evalList.html')
+    template = loader.get_template('evalList.html')
     context = {
         'all_evaluations' : all_evaluations,
     }
