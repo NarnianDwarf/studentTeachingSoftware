@@ -35,12 +35,13 @@ def evaluationPage(response):
             q6g = form.cleaned_data['question6g']
             q7h = form.cleaned_data['question7h']
             com = form.cleaned_data["comment"]
-            q.firstEvaluation(fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com)
+
+            q = firstEvaluation(fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com)
             q.save()
         return render(response, "submissionSuccess.html", {"form":form})
     else:
         form = firstEvaluationForm()
-    return render(response, "firstEvaluation.html", {"form":form})
+    return render(response, "evalQuestions.html", {"form":form})
 
 def listOfEvals(request):
     all_evaluations = firstEvaluation.objects.all()
