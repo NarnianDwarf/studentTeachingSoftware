@@ -41,3 +41,6 @@ class firstEvaluation(models.Model):
     question6g = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     question7h = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     comment = models.CharField(max_length = 1000, default = "")
+
+    def __str__(self):
+        return self.fname + ' - ' + self.lname

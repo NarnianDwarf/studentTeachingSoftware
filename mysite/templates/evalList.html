@@ -2,7 +2,7 @@
 
     <ul>
         {% for eval in all_evaluations %}
-        <li><a href="/evalFirst/{{ firstEvaluation.id }}/">{{ firstEvalution.stud_id }}</a></li>
+        <li><a href="/firstEvaluation/{{ eval.id }}">student id: {{ eval.stud_id }}, test id: {{ eval.id }}</a></li>
         {% endfor %}
     </ul>
 

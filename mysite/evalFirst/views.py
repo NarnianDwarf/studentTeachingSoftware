@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 from django.template import loader
 from django.http import HttpResponse
 from .forms import firstEvaluationForm
@@ -49,4 +50,15 @@ def listOfEvals(request):
     context = {
         'all_evaluations' : all_evaluations,
     }
+    return HttpResponse(template.render(context, request))
+
+def evaluationDetails(request, stud_id):
+    try:
+        eval = firstEvaluation.objects.get(id=stud_id)
+        template = loader.get_template('evaluationDetails.html')
+        context = {
+            'eval' : eval,
+        }
+    except firstEvaluation.DoesNotExist:
+        raise Http404("Evaluation does not exist")
     return HttpResponse(template.render(context, request))
