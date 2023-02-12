@@ -4,6 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from .forms import firstEvaluationForm
 from .models import firstEvaluation
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -61,4 +62,15 @@ def evaluationDetails(request, stud_id):
         }
     except firstEvaluation.DoesNotExist:
         raise Http404("Evaluation does not exist")
+    return HttpResponse(template.render(context, request))
+
+def registerPage(request):
+    form = UserCreationForm()
+    template = loader.get_template('register.html')
+    context = {'form': form}
+    return HttpResponse(template.render(context, request))
+
+def loginPage(request):
+    template = loader.get_template('login.html')
+    context = {}
     return HttpResponse(template.render(context, request))

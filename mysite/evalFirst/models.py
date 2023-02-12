@@ -15,6 +15,7 @@ QUESTION_CHOICES = (
     (DOESNOT, 'Does Not Meet Expectations'),
 )
 
+
 class firstEvaluation(models.Model):
     fname = models.CharField(max_length = 200, default = "Enter First Name")
     lname = models.CharField(max_length = 200, default = "Enter Last Name")

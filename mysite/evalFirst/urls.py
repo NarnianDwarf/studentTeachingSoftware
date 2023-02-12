@@ -6,4 +6,6 @@ urlpatterns = [
     path('questions/', views.evaluationPage, name='evaluationPage'),
     path('questions/list', views.listOfEvals, name='listOfEvals'),
     path('<int:stud_id>', views.evaluationDetails, name='evaluationDetails'),
+    path('register/', views.registerPage, name='register'),
+    path('login/', views.loginPage, name='login'),
 ]
