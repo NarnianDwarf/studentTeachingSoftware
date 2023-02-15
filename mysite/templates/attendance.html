@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <h1>Attendance</h1>
+    <br>
+
+    <form action="#" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit", name="save">Submit Attendance</button>
+    </form>
+</html>

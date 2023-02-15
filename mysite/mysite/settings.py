@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'evalFirst.apps.EvalfirstConfig',
+    'attendance.apps.AttendanceConfig'
 ]
 
 MIDDLEWARE = [
