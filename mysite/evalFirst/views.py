@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 from django.template import loader
 from django.http import HttpResponse
-from .forms import firstEvaluationForm
+from .forms import firstEvaluationForm, CreateUserForm
 from .models import firstEvaluation
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 # Create your views here.
 
@@ -65,12 +67,39 @@ def evaluationDetails(request, stud_id):
     return HttpResponse(template.render(context, request))
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+
+            messages.success(request, 'Account was created for '+ user)
+            return redirect('login')
+
     template = loader.get_template('register.html')
     context = {'form': form}
     return HttpResponse(template.render(context, request))
 
 def loginPage(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('homeFromLogin/')
+        else:
+            messages.info(request, 'Username or password is incorrect.')
+
     template = loader.get_template('login.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
