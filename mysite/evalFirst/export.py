@@ -1,9 +1,6 @@
-# (A) INIT
-# (A1) LOAD MODULES
-import sqlite3, os, openpyxl #install openpyxl in command prompt
+import sqlite3, os, openpyxl #make sure to install openpyxl in command prompt, it is what allows the export to excel.
 from sqlite3 import Error
 
-# (A2) SETTINGS
 DBFILE = "users.db" #change name to the name of our database
 
 # (B) OPEN DATABASE & CREATE EXCEL
@@ -13,7 +10,7 @@ book = openpyxl.Workbook()
 sheet = book.active
  
 # (C) EXPORT DATA TO EXCEL
-cursor.execute("SELECT * FROM `users`") #again, change where it says user
+cursor.execute("SELECT * FROM `users`") #again, change where it says user to the name of the table
 results = cursor.fetchall()
 i = 0
 for row in results:
@@ -27,5 +24,3 @@ for row in results:
 # (D) SAVE EXCEL FILE & CLOSE DB
 book.save("demo.xlsx") #change name of what we save it to
 conn.close()
-
-#     https://code-boxx.com/python-export-database-excel/#sec-download
