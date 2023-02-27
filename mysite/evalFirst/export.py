@@ -1,7 +1,7 @@
 import sqlite3, os, openpyxl #make sure to install openpyxl in command prompt, it is what allows the export to excel.
 from sqlite3 import Error
 
-DBFILE = "users.db" #change name to the name of our database
+DBFILE = "all_evaluations" #change name to the name of our database. Correct me if this is incorrect.
 
 # (B) OPEN DATABASE & CREATE EXCEL
 conn = sqlite3.connect(DBFILE) 
@@ -10,7 +10,7 @@ book = openpyxl.Workbook()
 sheet = book.active
  
 # (C) EXPORT DATA TO EXCEL
-cursor.execute("SELECT * FROM `users`") #again, change where it says user to the name of the table
+cursor.execute("SELECT * FROM `eval`") #again, change name to the name of the table to export, again correct me if I am mistaken
 results = cursor.fetchall()
 i = 0
 for row in results:
