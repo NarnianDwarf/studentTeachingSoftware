@@ -18,4 +18,5 @@ class submitAttendance(models.Model):
     lname = models.CharField(max_length = 200, default = "Enter Last Name")
     stud_id = models.IntegerField(default = 0)
     date = models.DateField()
-    attend = models.IntegerField(choices = ATTENDANCE_CHOICES, default = 0)
+    # attend = models.IntegerField(choices = ATTENDANCE_CHOICES, default = 0)
+    reason = models.CharField(max_length = 1000, default = "")

@@ -19,4 +19,5 @@ class attendanceForm(forms.Form):
     lname = forms.CharField(label = "Last Name", max_length = 200)
     stud_id = forms.IntegerField(required = True, label = "Student ID")
     date = forms.DateField(label = "Date", initial = "2023-01-01", widget = forms.SelectDateWidget(years = YEARS))
-    attend = forms.ChoiceField(label = "Please Mark Your Attendance", choices = ATTENDANCE_CHOICES)
+    # attend = forms.ChoiceField(label = "Please Mark Your Attendance", choices = ATTENDANCE_CHOICES)
+    reason = forms.CharField(label="Reason for absence:", max_length = 1000)

@@ -15,9 +15,10 @@ def attendancePage(response):
             l = form.cleaned_data["lname"]
             s = form.cleaned_data['stud_id']
             d = form.cleaned_data['date']
-            a = form.cleaned_data['attend']
+            # a = form.cleaned_data['attend']
+            r = form.cleaned_data["reason"]
             
-            q = submitAttendance(fname = f, lname = l, stud_id = s, date = d, attend = a)
+            q = submitAttendance(fname = f, lname = l, stud_id = s, date = d, reason = r)
             q.save()
         return render(response, "attendanceSubmission.html", {"form":form})
     else:
