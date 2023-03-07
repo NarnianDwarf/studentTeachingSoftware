@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('evalFirst.urls')),
+    path('', include('home.urls')),
     path('homeFromLogin/', include('home.urls')),
     path('firstEvaluation/login/homeFromLogin/', include('home.urls')),
     path('firstEvaluation/', include('evalFirst.urls')),

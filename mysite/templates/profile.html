@@ -1,0 +1,48 @@
+{% block content %}
+
+{% if profile %}
+
+    <div class="container text-center">
+        <div class="row">
+            <h1>{{ profile.user.username }}'s Profile</h1>
+
+            <br/><br/>
+
+            {% if evaluations %}
+                {% for evaluation in evaluations %}
+
+                <div class="alert aleret-dark" role="alert">
+                    {{evaluation}}
+                </div><br/><br/>
+
+                {% endfor %}
+            {% endif %}
+
+        </div>
+
+        <div class="col-4">
+            <strong>Supervises:</strong><br/>
+
+            {% for supervising in profile.supervise.all %}
+        
+                <a href="{% url 'profile' supervising.user.id%}">@{{ supervising }}</a> <br/>
+        
+            {% endfor %}
+
+            <br/><br/>
+            <strong>Supervised By:</strong><br/>
+
+            <br/>
+            {% for aUser in profile.supervised_by.all%}
+                <a href="{% url 'profile' aUser.user.id%}"> @{{ aUser }}</a><br/>
+            {% endfor %} 
+            
+        </div>
+    </div>
+
+
+
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+
+{% load static %}
+
+{% block content %}
+    <h1>Profiles</h1>
+    <br/>
+
+    {% if profiles %}
+        {%for profile in profiles%}
+
+            <div class="card mb-3" style="maxwidth: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{profile.user.username}}</h5>
+                            <p class="card-text"><a href="{% url 'profile' profile.user.id %}">@{{profile.user.username}}</a></p>
+                            <br/><br/>
+                            <p class="card-text"><small class="text-muted"> LastUpdated {{profile.date_modified}} </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <br/><br/>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
