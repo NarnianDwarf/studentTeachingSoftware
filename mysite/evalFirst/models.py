@@ -21,7 +21,7 @@ class firstEvaluation(models.Model):
     user = models.ForeignKey(
         User, related_name="firstEvaluation",
         on_delete=models.DO_NOTHING,
-        default=1,
+        default=User,
     )
 
     fname = models.CharField(max_length = 200, default = "Enter First Name")
