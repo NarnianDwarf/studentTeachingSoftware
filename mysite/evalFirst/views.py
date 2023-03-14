@@ -12,7 +12,7 @@ from django.contrib import messages
 # Create your views here.
 
 def evaluationPage(response):
-    if request.user.is_authenticated:
+    if response.user.is_authenticated:
         if response.method == "POST":
             form = firstEvaluationForm(response.POST)
             if form.is_valid():
@@ -49,7 +49,7 @@ def evaluationPage(response):
             form = firstEvaluationForm()
         return render(response, "evalQuestions.html", {"form":form})
     else:
-        messages.success(request, ("You must be logged in to view this page."))
+        messages.success(response, ("You must be logged in to view this page."))
         return redirect('login')
 
 def listOfEvals(request):
