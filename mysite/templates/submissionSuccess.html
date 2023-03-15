@@ -1,5 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-    <h1>You Successfully Submitted an Evaluation</h1>
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+
+    <h1>
+        <img src="{% static 'images/logo.jpg' %}" class="img-fluidrounded-start" alt="Logo Image">
+        You Successfully Submitted an Evaluation
+    </h1>
     <br>
 </html>
