@@ -10,7 +10,7 @@ book = openpyxl.Workbook()
 sheet = book.active
  
 # (C) EXPORT DATA TO EXCEL
-cursor.execute("SELECT * FROM `firstEvaluation`") 
+cursor.execute("SELECT FROM `evalFirst.models`") 
 results = cursor.fetchall()
 i = 0
 for row in results:
