@@ -1,13 +1,25 @@
-{% if all_evaluations %}
+{% if profile %}
 
-    <ul>
-        {% for eval in all_evaluations %}
-        <li><a href="/firstEvaluation/{{ eval.id }}">student id: {{ eval.stud_id }}, test id: {{ eval.id }}</a></li>
+    {% if all_evaluations %}
+
+        {% for supervising in profile.supervise.all %}
+
+            {% for eval in all_evaluations %}
+
+                {% if supervising.user_id == eval.stud_id %}
+                    <li><a href="/firstEvaluation/{{ eval.id }}">student id: {{ eval.stud_id }}, test id: {{ eval.id }}</a></li>
+                {% endif %}
+
+            {% endfor %}
+            
         {% endfor %}
-    </ul>
+
+    {% endif %}
 
 {% else %}
 
-    <h3>You don't have any Evaluations.</h3>
+    <h3>There are no evaluations for you to view.</h3>
 
 {% endif %}
+
+<a href="{% url 'homePage' %}">Return to home page.</a> <br/>

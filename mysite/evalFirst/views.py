@@ -54,10 +54,12 @@ def evaluationPage(response):
 
 def listOfEvals(request):
     if request.user.is_authenticated:
+        profile = Profile.objects.get(user_id=request.user.id)
         all_evaluations = firstEvaluation.objects.all()
         template = loader.get_template('evalList.html')
         context = {
             'all_evaluations' : all_evaluations,
+            'profile' : profile,
         }
         return HttpResponse(template.render(context, request))
     else:
