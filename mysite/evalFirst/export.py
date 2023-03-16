@@ -1,7 +1,7 @@
 import sqlite3, os, openpyxl #make sure to install openpyxl in command prompt, it is what allows the export to excel.
 from sqlite3 import Error
 
-DBFILE = "DB.SQLite3" 
+DBFILE = "db.sqlite3" 
 
 # (B) OPEN DATABASE & CREATE EXCEL
 conn = sqlite3.connect(DBFILE) 
