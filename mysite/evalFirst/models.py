@@ -18,11 +18,6 @@ QUESTION_CHOICES = (
 )
 
 class firstEvaluation(models.Model):
-    user = models.ForeignKey(
-        User, related_name="firstEvaluation",
-        on_delete=models.DO_NOTHING,
-        default=User,
-    )
 
     fname = models.CharField(max_length = 200, default = "Enter First Name")
     lname = models.CharField(max_length = 200, default = "Enter Last Name")
@@ -49,6 +44,11 @@ class firstEvaluation(models.Model):
     question6g = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     question7h = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     comment = models.CharField(max_length = 1000, default = "")
+    user = models.ForeignKey(
+        User, related_name="firstEvaluation",
+        on_delete=models.DO_NOTHING,
+        default=1,
+    )
 
     def __str__(self):
         return self.fname + ' - ' + self.lname
@@ -57,7 +57,7 @@ class firstEvaluation(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     supervise = models.ManyToManyField("self", related_name="supervised_by", symmetrical=False, blank=True)
-
+    student_ID = models.IntegerField(default=0)
     date_modified = models.DateTimeField(User, auto_now=True)
 
     def __str__(self):

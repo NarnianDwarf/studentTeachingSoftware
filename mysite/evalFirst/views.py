@@ -4,7 +4,7 @@ from django.template import loader
 from django.http import HttpResponse
 from .forms import firstEvaluationForm #CreateUserForm
 from .models import firstEvaluation
-from .models import Profile
+from .models import Profile, User
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -41,8 +41,11 @@ def evaluationPage(response):
                 q6g = form.cleaned_data['question6g']
                 q7h = form.cleaned_data['question7h']
                 com = form.cleaned_data["comment"]
+                # u = form.cleaned_data['user']
+                u = Profile.objects.get(student_ID=s)
+                su = User.objects.get(id=u.user_id)
 
-                q = firstEvaluation(user=response.user, fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com)
+                q = firstEvaluation(fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com, user=su)
                 q.save()
             return render(response, "submissionSuccess.html", {"form":form})
         else:
@@ -56,10 +59,12 @@ def listOfEvals(request):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=request.user.id)
         all_evaluations = firstEvaluation.objects.all()
+        all_profiles = Profile.objects.all()
         template = loader.get_template('evalList.html')
         context = {
             'all_evaluations' : all_evaluations,
             'profile' : profile,
+            'all_profiles' : all_profiles,
         }
         return HttpResponse(template.render(context, request))
     else:

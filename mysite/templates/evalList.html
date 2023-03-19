@@ -4,14 +4,27 @@
 
         {% for supervising in profile.supervise.all %}
 
-            {% for eval in all_evaluations %}
+            {% for studentProfile in all_profiles %}
 
-                {% if supervising.user_id == eval.stud_id %}
-                    <li><a href="/firstEvaluation/{{ eval.id }}">student id: {{ eval.stud_id }}, test id: {{ eval.id }}</a></li>
+                {% if studentProfile.user_id == supervising.user_id %}
+
+                    {% for eval in all_evaluations %}
+
+                        <p>Did I make it here?</p>
+                        <p> {{ studentProfile }} </p>
+                        <p>{{studentProfile.student_ID}}</p>
+                        <p>{{eval.stud_id}}</p>
+        
+                        {% if studentProfile.student_ID == eval.stud_id %}
+                            <li><a href="/firstEvaluation/{{ eval.id }}">student id: {{ eval.stud_id }}, test id: {{ eval.id }}</a></li>
+                        {% endif %}
+        
+                    {% endfor %}
+
                 {% endif %}
 
             {% endfor %}
-            
+        
         {% endfor %}
 
     {% endif %}
