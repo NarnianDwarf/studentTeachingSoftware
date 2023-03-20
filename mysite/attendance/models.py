@@ -20,3 +20,6 @@ class submitAttendance(models.Model):
     date = models.DateField()
     # attend = models.IntegerField(choices = ATTENDANCE_CHOICES, default = 0)
     reason = models.CharField(max_length = 1000, default = "")
+
+    def __str__(self):
+        return self.lname + ", " + self.fname

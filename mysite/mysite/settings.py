@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'evalFirst.apps.EvalfirstConfig',
     'attendance.apps.AttendanceConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
