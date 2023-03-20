@@ -18,10 +18,12 @@ QUESTION_CHOICES = (
 )
 
 class firstEvaluation(models.Model):
-
-    fname = models.CharField(max_length = 200, default = "Enter First Name")
-    lname = models.CharField(max_length = 200, default = "Enter Last Name")
-    stud_id = models.IntegerField(default = 0)
+    fname = models.CharField(db_column = 'First Name', max_length = 200, default = "Enter First Name")
+    lname = models.CharField(db_column = 'Last Name', max_length = 200, default = "Enter Last Name")
+    stud_id = models.IntegerField(db_column = 'Student ID', default = 0)
+    # fname = models.CharField(max_length = 200, default = "Enter First Name")
+    # lname = models.CharField(max_length = 200, default = "Enter Last Name")
+    # stud_id = models.IntegerField(default = 0)
     question1a = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     question1b = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     question1c = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
@@ -49,6 +51,9 @@ class firstEvaluation(models.Model):
         on_delete=models.DO_NOTHING,
         default=1,
     )
+
+    # class Meta:
+    #     db_table = 'FirstEval'
 
     def __str__(self):
         return self.fname + ' - ' + self.lname
