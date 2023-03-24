@@ -62,6 +62,7 @@ class firstEvaluation(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     supervise = models.ManyToManyField("self", related_name="supervised_by", symmetrical=False, blank=True)
+    temp_admin = models.IntegerField(default=0) #0 student, #1 admin
     student_ID = models.IntegerField(default=0)
     date_modified = models.DateTimeField(User, auto_now=True)
 

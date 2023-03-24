@@ -11,6 +11,34 @@ from django.contrib import messages
 
 # Create your views here.
 
+
+# from django.core.mail import EmailMessage
+# from datetime import datetime
+
+# # Create your views here.
+
+# def emailSender(request):
+#     sendConfirmEmail(['cooney01134@gmail.com'], "Evaluation", "0001", "Sarah Cooney")
+#     sendNoticeEmail(['coon3571@ravens.benedictine.edu'], "0001")
+
+# def sendConfirmEmail(recipients, formType, submitID, sendTo):
+#     now = datetime.now()
+#     # mm/dd/YY H:M:S military time
+
+#     dt_string = now.strftime("%m/%d/%Y %H:%M:%S") #gets time
+#     msg = EmailMessage('No-reply Evaluation Submition Confirmation', "Hey", to = recipients)
+#     msg.send()
+
+# def sendNoticeEmail(recipients, submitID):
+#     msg = EmailMessage('No-reply Evaluation Submition Notification',
+#                     '''A new evaluation has been posted on your portal in the Raven's Student-Teacher Hub.
+#                     \n If you have any questions, please contact your supervisor.\n
+#                     \n submitID: ''' + submitID + '''\n
+#                     \n - Raven's Student-Teacher Hub''', to = recipients)
+#     msg.send()
+
+
+
 def evaluationPage(response):
     if response.user.is_authenticated:
         if response.method == "POST":
@@ -47,6 +75,7 @@ def evaluationPage(response):
 
                 q = firstEvaluation(fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com, user=su)
                 q.save()
+                # emailSender(response)
             return render(response, "submissionSuccess.html", {"form":form})
         else:
             form = firstEvaluationForm()
