@@ -1,33 +1,86 @@
-{% if profile %}
+<!DOCTYPE html>
+<html>
 
-    {% if all_evaluations %}
+    <head>
+        <style>
 
-        {% for supervising in profile.supervise.all %}
+            .mainTitle {
+                background-color: #d10e00;
+                margin-left: auto;
+                margin-right: auto;
+                align-items: center;
+                text-align: center;
+            }
 
-            {% for studentProfile in all_profiles %}
+            .title {
+                background-color: #999;
+                text-emphasis-color: #d10e00;
+                margin-left: auto;
+                margin-right: auto;
+                align-items: center;
+                text-align: center;
+            }
+            .button {
+            background-color: #4b3e3d; /* Red */
+            border: black;
+            border-radius: 15px;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            }
 
-                {% if studentProfile.user_id == supervising.user_id %}
+            .button:hover {background-color: #8c0d04;}
 
-                    {% for eval in all_evaluations %}
-        
-                        {% if studentProfile.student_ID == eval.stud_id %}
-                            <li><a href="/firstEvaluation/{{ eval.id }}">student id: {{ eval.stud_id }}, test id: {{ eval.id }}</a></li>
-                        {% endif %}
-        
-                    {% endfor %}
+            .button:active {
+                background-color: #8c0d04;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+        </style>
 
-                {% endif %}
+    </head>
+    <h1 class="mainTitle">Evaluations:</h1>
 
+    {% if profile %}
+
+        {% if all_evaluations %}
+
+            {% for supervising in profile.supervise.all %}
+
+                {% for studentProfile in all_profiles %}
+
+                    {% if studentProfile.user_id == supervising.user_id %}
+                        <h2 class="title">{{ supervising.user }}</h2>
+                        
+                        {% for eval in all_evaluations %}
+            
+                            {% if studentProfile.student_ID == eval.stud_id %}
+                                <p><a href="/firstEvaluation/{{ eval.id }}"><button class="button"> student id: {{ eval.stud_id }}, test id: {{ eval.id }}</button></a></p>
+                            {% endif %}
+            
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endfor %}
+            
             {% endfor %}
-        
-        {% endfor %}
+
+        {% endif %}
+
+    {% else %}
+
+        <h3>There are no evaluations for you to view.</h3>
 
     {% endif %}
 
-{% else %}
-
-    <h3>There are no evaluations for you to view.</h3>
-
-{% endif %}
-
-<a href="{% url 'homePage' %}">Return to home page.</a> <br/>
+    <a href="{% url 'homePage' %}">Return to home page.</a> <br/>
+</html>

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from evalFirst.models import Profile
+from evalFirst.models import Profile, User
 from django.contrib import messages
 
 def homePage(request):
-   if request.user.is_authenticated:
+    if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=request.user.id)
         if profile.temp_admin == 1:
             return render(request, 'adminHomePage.html')
