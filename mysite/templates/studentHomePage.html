@@ -43,24 +43,59 @@
                 display: inline-block;
                 margin: 6px 4px;
                 margin-left: 33%;
-                margin-top: 150px;
+                margin-top: 50px;
             }
 
             .button2 {
                 background-color: #d10e00;
                 display: inline-block;
                 margin: 6px 4px;
-                margin-top: 150px;  
+                margin-top: 50px;
             }
+
+            .button3 {
+                background-color: #d10e00;
+                margin-left: auto;
+                margin-right: auto;
+                text-decoration: none;
+            }
+
+            .button4 {
+                background-color: #d10e00;
+                display: inline-block;
+                margin: 6px 4px;
+                margin-left: 38%;
+                margin-top: 100px;
+            }
+
+            .button5 {
+                background-color: #d10e00;
+                display: inline-block;
+                margin: 6px 4px;
+                margin-top: 100px;  
+            }
+
         </style>
-        <span>Hello, {{user.username}}</span>
-        <span><a href="firstEvaluation/logout">Logout
-            <!-- <button type="button">Logout</button> -->
-        </a></span>
+
         
+        <span><a href="firstEvaluation/logout">
+            <button type="button">Logout</button>
+        </a></span>
+
+        <p style="font-size:20px"><span>Hello, {{user.username}}</span></p>
+
+        <br>
+        <img src="{% static 'images/logo.jpg' %}" class="img-fluidrounded-start" alt="Logo Image">
+
+        <a class="nav-link" href="{% url 'profile_list' %}">
+            <button class="button button4">Profile List</button>
+        </a> 
+        <a class="nav-link" href="{% url 'profile' request.user.id %}">
+            <button class="button button5">My Profile</button>
+        </a> 
     </head>
 
-    <nav class="navbar navbar-expand-ig navbar-dark bg-dark">
+    <!-- <nav class="navbar navbar-expand-ig navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{ % url 'homePage' %}"> Words</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,11 +119,9 @@
                 </form>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <body>
-        
-        <img src="{% static 'images/logo.jpg' %}" class="img-fluidrounded-start" alt="Logo Image">
         <a href="/firstEvaluation/questions/list">
             <button class="button button1">View Evaluations</button>
         </a>
@@ -96,7 +129,7 @@
             <button class="button button2">Submit Evaluation</button>
         </a> 
         <a href="/attendance">
-            <button class="button">Submit Absence</button>
+            <button class="button button3">Submit Absence</button>
         </a>
         <!-- These three buttons cover the views of Student Teachers. The same three buttons would apply to cooperating teachers and clinical supervisors, except
         they would be able to view the attendance, rather than update it. Finally, the Head of the Department cannot submit evaluations, but can view evaluations 

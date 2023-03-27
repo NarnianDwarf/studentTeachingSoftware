@@ -26,11 +26,11 @@ def sendConfirmEmail(recipients, formType, submitID, sendTo):
     # mm/dd/YY H:M:S military time
 
     dt_string = now.strftime("%m/%d/%Y %H:%M:%S") #gets time
-    msg = EmailMessage('No-reply Evaluation Submition Confirmation', "Hey", to = recipients)
+    msg = EmailMessage('No-reply Evaluation Submission Confirmation', "Hi", to = recipients)
     msg.send()
 
 def sendNoticeEmail(recipients, submitID):
-    msg = EmailMessage('No-reply Evaluation Submition Notification',
+    msg = EmailMessage('No-reply Evaluation Submission Notification',
                     '''A new evaluation has been posted on your portal in the Raven's Student-Teacher Hub.
                     \n If you have any questions, please contact your supervisor.\n
                     \n submitID: ''' + submitID + '''\n
@@ -122,7 +122,7 @@ def profile_list(request):
         profiles = Profile.objects.exclude(user=request.user)
         return render(request, 'profile_list.html', {"profiles":profiles})
     else:
-        messages.success(request, ("You must be loggined in beech."))
+        messages.success(request, ("You must be logged in to view this page."))
         return redirect('login')
 
 def profile(request, pk):
