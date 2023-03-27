@@ -1,23 +1,73 @@
-{{ eval }}
+<!DOCTYPE html>
+<html>
 
-    <p>question1a: {{eval.question1a}}</p>
-    <p>question1b: {{eval.question1b}}</p>
-    <p>question1c: {{eval.question1c}}</p>
-    <p>question1d: {{eval.question1d}}</p>
-    <p>question2e: {{eval.question2e}}</p>
-    <p>question2f: {{eval.question2f}}</p>
-    <p>question2g: {{eval.question2g}}</p>
-    <p>question2h: {{eval.question2h}}</p>
-    <p>question2i: {{eval.question2i}}</p>
-    <p>question3j: {{eval.question3j}}</p>
-    <p>question3k: {{eval.question3k}}</p>
-    <p>question3l: {{eval.question3l}}</p>
-    <p>question4m: {{eval.question4m}}</p>
-    <p>question5a: {{eval.question5a}}</p>
-    <p>question5b: {{eval.question5b}}</p>
-    <p>question5c: {{eval.question5c}}</p>
-    <p>question5d: {{eval.question5d}}</p>
-    <p>question5e: {{eval.question5e}}</p>
-    <p>question6f: {{eval.question6f}}</p>
-    <p>question6g: {{eval.question6g}}</p>
-    <p>question7h: {{eval.question7h}}</p>
+    <head>
+        <style>
+
+            .eval_card {
+                width: 350px;
+                margin-top: auto;
+                margin-bottom: auto;
+                background: #a8a7a7;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 5px;
+		    }
+
+            .thisText {
+                color: rgb(104, 6, 6);
+            }
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="eval_card">
+                    <h2 class="thisText">Evaluation of {{eval.user}}</h2>
+                    <h4>Evaluation id: {{ eval.id }}</h4>
+                    <p>question1a: {{eval.question1a}}</p>
+                    <p>question1b: {{eval.question1b}}</p>
+                    <p>question1c: {{eval.question1c}}</p>
+                    <p>question1d: {{eval.question1d}}</p>
+                    <p>question2e: {{eval.question2e}}</p>
+                    <p>question2f: {{eval.question2f}}</p>
+                    <p>question2g: {{eval.question2g}}</p>
+                    <p>question2h: {{eval.question2h}}</p>
+                    <p>question2i: {{eval.question2i}}</p>
+                    <p>question3j: {{eval.question3j}}</p>
+                    <p>question3k: {{eval.question3k}}</p>
+                    <p>question3l: {{eval.question3l}}</p>
+                    <p>question4m: {{eval.question4m}}</p>
+                    <p>question5a: {{eval.question5a}}</p>
+                    <p>question5b: {{eval.question5b}}</p>
+                    <p>question5c: {{eval.question5c}}</p>
+                    <p>question5d: {{eval.question5d}}</p>
+                    <p>question5e: {{eval.question5e}}</p>
+                    <p>question6f: {{eval.question6f}}</p>
+                    <p>question6g: {{eval.question6g}}</p>
+                    <p>question7h: {{eval.question7h}}</p>
+                    <p>comment: {{eval.comment}}</p>
+            
+                </div>
+            </div>
+        </div>
+
+        <!-- {{ eval }} -->
+        
+    </body>
+    
+</html>

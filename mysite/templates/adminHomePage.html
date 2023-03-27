@@ -59,9 +59,8 @@
 
     <body>
         <img src="{% static 'images/logo.jpg' %}" class="img-fluidrounded-start" alt="Logo Image">
-        <button class="button button1">View Evaluations</button>
-        <button class="button button2">Manage Evaluations</button>
-        <button class="button">View Absences</button>
-
+        <a href="/firstEvaluation/questions/list"><button class="button button1">View Evaluations</button></a>
+        <a href="/admin"><button class="button button2">Manage Evaluations</button></a>
+        <a href="/admin"><button class="button button3">View Absences</button></a>
     </body>
 </html>
