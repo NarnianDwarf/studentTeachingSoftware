@@ -9,6 +9,37 @@
             width: 50%;
             height: 50%;
         }
+        .title_card {
+            width: 350px;
+            margin-top: auto;
+            margin-bottom: auto;
+            background: #e4d3d3;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+        }
+        .button {
+            background-color: #4b3e3d; /* Red */
+            border: black;
+            border-radius: 15px;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            align-items: center;
+        }
+        .button:hover {background-color: #8c0d04;}
     </style>
     <head>
         <img src="{% static 'images/logo.jpg' %}" class="img-fluidrounded-start" alt="Logo Image">
@@ -17,7 +48,13 @@
 
     <form action="#" method="post">
         {% csrf_token %}
-        {{form.as_p}}
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="title_card">
+                    {{form.as_p}}
+                </div>
+            </div>
+        </div>
         <!-- <label for="First_Name">First Name: </label>
         <input id="First_Name" type="text" name="First_Name" value="{{current_name}}"> -->
 
@@ -27,6 +64,6 @@
         date = forms.DateField(label = "Date", initial = "2023-01-01", widget = forms.SelectDateWidget(years = YEARS))
         # attend = forms.ChoiceField(label = "Please Mark Your Attendance", choices = ATTENDANCE_CHOICES)
         reason = forms.CharField(label="Reason for absence:", max_length = 1000) -->
-        <button type="submit", name="save">Submit Attendance</button>
+        <button class="button" type="submit", name="save">Submit Attendance</button>
     </form>
 </html>
