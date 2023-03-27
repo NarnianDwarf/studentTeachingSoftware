@@ -4,6 +4,8 @@ from .models import firstEvaluation, Profile
 from import_export import resources
 # from import_export.admin import ExportActionMixin
 from import_export.admin import ImportExportModelAdmin
+from django.contrib.contenttypes.models import ContentType
+from django.http import HttpResponseRedirect
 
 # Register your models here.
 
@@ -39,9 +41,25 @@ admin.site.register(User, UserAdmin)
 #     Student_ID = getattr(firstEvaluation, "stud_id")
 #     list_display = ('First_Name', 'Last_Name', 'Student_ID')
 
+def name(obj):
+    return("%s, %s" % (obj.last_Name, obj.first_Name))
+
+def date_submitted(obj):
+    return("%s" % (obj.date))
+
 class FirstEvaluationAdmin(ImportExportModelAdmin):
     model = firstEvaluation
+    list_display = (name, date_submitted)
 
+def export_selected_objects(modeladmin, request, queryset):
+    selected = queryset.values_list('pk', flat=True)
+    ct = ContentType.objects.get_for_model(queryset.model)
+    # return HttpResponseRedirect('/export/?ct=%s&ids=%s' % (
+    #     ct.pk,
+    #     ','.join(str(pk) for pk in selected),
+    # ))
+
+admin.site.add_action(export_selected_objects)
 admin.site.register(firstEvaluation, FirstEvaluationAdmin)
 # admin.site.register(firstEvaluation)
 # admin.site.register(Profile)

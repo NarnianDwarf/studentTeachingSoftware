@@ -17,34 +17,44 @@ QUESTION_CHOICES = (
     (DOESNOT, 'Does Not Meet Expectations'),
 )
 
+EVALUATION_NUMBER = (
+    (0, "----------"),
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+)
+
 class firstEvaluation(models.Model):
-    fname = models.CharField(db_column = 'First Name', max_length = 200, default = "Enter First Name")
-    lname = models.CharField(db_column = 'Last Name', max_length = 200, default = "Enter Last Name")
+    first_Name = models.CharField(db_column = 'First Name', max_length = 200, default = "Enter First Name")
+    last_Name = models.CharField(db_column = 'Last Name', max_length = 200, default = "Enter Last Name")
     stud_id = models.IntegerField(db_column = 'Student ID', default = 0)
     # fname = models.CharField(max_length = 200, default = "Enter First Name")
     # lname = models.CharField(max_length = 200, default = "Enter Last Name")
     # stud_id = models.IntegerField(default = 0)
-    question1a = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question1b = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question1c = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question1d = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question2e = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question2f = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question2g = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question2h = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question2i = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question3j = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question3k = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question3l = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question4m = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question5a = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question5b = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question5c = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question5d = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question5e = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question6f = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question6g = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
-    question7h = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Evaluation_Number = models.IntegerField(choices = EVALUATION_NUMBER, default = 0)
+    date = models.DateField(default = "2023-01-01")
+    Pedagogy_A = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_B = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_C = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_D = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_E = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_F = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_G = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_H = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_I = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_J = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_K = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_L = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Pedagogy_M = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_A = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_B = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_C = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_D = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_E = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_F = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_G = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
+    Disposition_H = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     comment = models.CharField(max_length = 1000, default = "")
     user = models.ForeignKey(
         User, related_name="firstEvaluation",
@@ -56,7 +66,7 @@ class firstEvaluation(models.Model):
     #     db_table = 'FirstEval'
 
     def __str__(self):
-        return self.fname + ' - ' + self.lname
+        return self.first_Name + ' - ' + self.last_Name
 
     
 class Profile(models.Model):

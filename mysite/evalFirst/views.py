@@ -44,30 +44,32 @@ def evaluationPage(response):
         if response.method == "POST":
             form = firstEvaluationForm(response.POST)
             if form.is_valid():
-                f = form.cleaned_data["fname"]
-                l = form.cleaned_data["lname"]
+                f = form.cleaned_data["first_Name"]
+                l = form.cleaned_data["last_Name"]
                 s = form.cleaned_data['stud_id']
-                q1a = form.cleaned_data['question1a']
-                q1b = form.cleaned_data['question1b']
-                q1c = form.cleaned_data['question1c']
-                q1d = form.cleaned_data['question1d']
-                q2e = form.cleaned_data['question2e']
-                q2f = form.cleaned_data['question2f']
-                q2g = form.cleaned_data['question2g']
-                q2h = form.cleaned_data['question2h']
-                q2i = form.cleaned_data['question2i']
-                q3j = form.cleaned_data['question3j']
-                q3k = form.cleaned_data['question3k']
-                q3l = form.cleaned_data['question3l']
-                q4m = form.cleaned_data['question4m']
-                q5a = form.cleaned_data['question5a']
-                q5b = form.cleaned_data['question5b']
-                q5c = form.cleaned_data['question5c']
-                q5d = form.cleaned_data['question5d']
-                q5e = form.cleaned_data['question5e']
-                q6f = form.cleaned_data['question6f']
-                q6g = form.cleaned_data['question6g']
-                q7h = form.cleaned_data['question7h']
+                e = form.cleaned_data['Evaluation_Number']
+                d = form.cleaned_data['date']
+                q1a = form.cleaned_data['Pedagogy_A']
+                q1b = form.cleaned_data['Pedagogy_B']
+                q1c = form.cleaned_data['Pedagogy_C']
+                q1d = form.cleaned_data['Pedagogy_D']
+                q2e = form.cleaned_data['Pedagogy_E']
+                q2f = form.cleaned_data['Pedagogy_F']
+                q2g = form.cleaned_data['Pedagogy_G']
+                q2h = form.cleaned_data['Pedagogy_H']
+                q2i = form.cleaned_data['Pedagogy_I']
+                q3j = form.cleaned_data['Pedagogy_J']
+                q3k = form.cleaned_data['Pedagogy_K']
+                q3l = form.cleaned_data['Pedagogy_L']
+                q4m = form.cleaned_data['Pedagogy_M']
+                q5a = form.cleaned_data['Disposition_A']
+                q5b = form.cleaned_data['Disposition_B']
+                q5c = form.cleaned_data['Disposition_C']
+                q5d = form.cleaned_data['Disposition_D']
+                q5e = form.cleaned_data['Disposition_E']
+                q6f = form.cleaned_data['Disposition_F']
+                q6g = form.cleaned_data['Disposition_G']
+                q7h = form.cleaned_data['Disposition_H']
                 com = form.cleaned_data["comment"]
                 # u = form.cleaned_data['user']
                 inquiry = Profile.objects.all()
@@ -79,7 +81,7 @@ def evaluationPage(response):
                         abool = 1
                 if abool == 0:
                     return HttpResponse("Please enter a real student id") #make a html template for this
-                q = firstEvaluation(fname = f, lname = l, stud_id = s, question1a = q1a, question1b = q1b, question1c = q1c, question1d = q1d, question2e = q2e, question2f = q2f, question2g = q2g, question2h = q2h, question2i = q2i, question3j = q3j, question3k = q3k, question3l = q3l, question4m = q4m, question5a = q5a, question5b = q5b, question5c = q5c, question5d = q5d, question5e = q5e, question6f = q6f, question6g = q6g, question7h = q7h, comment = com, user=su)
+                q = firstEvaluation(first_Name = f, last_Name = l, stud_id = s, Evaluation_Number = e, date = d, Pedagogy_A = q1a, Pedagogy_B = q1b, Pedagogy_C = q1c, Pedagogy_D = q1d, Pedagogy_E = q2e, Pedagogy_F = q2f, Pedagogy_G = q2g, Pedagogy_H = q2h, Pedagogy_I = q2i, Pedagogy_J = q3j, Pedagogy_K = q3k, Pedagogy_L = q3l, Pedagogy_M = q4m, Disposition_A = q5a, Disposition_B = q5b, Disposition_C = q5c, Disposition_D = q5d, Disposition_E = q5e, Disposition_F = q6f, Disposition_G = q6g, Disposition_H = q7h, comment = com, user=su)
                 q.save()
                 # emailSender(response)
             return render(response, "submissionSuccess.html", {"form":form})
@@ -89,6 +91,7 @@ def evaluationPage(response):
     else:
         messages.success(response, ("You must be logged in to view this page."))
         return redirect('login')
+
 
 def listOfEvals(request):
     if request.user.is_authenticated:
