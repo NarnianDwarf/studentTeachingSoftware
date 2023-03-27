@@ -5,7 +5,7 @@
         <style>
 
             .mainTitle {
-                background-color: #d10e00;
+                background-color: #B30838;
                 margin-left: auto;
                 margin-right: auto;
                 align-items: center;
@@ -33,12 +33,12 @@
 
             .altMainTitle {
                 margin: 10;
-                color: #d10e00;
+                color: #B30838;
             }
 
             .title {
                 background-color: #999;
-                text-emphasis-color: #d10e00;
+                text-emphasis-color: #B30838;
                 margin-left: auto;
                 margin-right: auto;
                 align-items: center;
@@ -62,7 +62,7 @@
             }
 
             .endButton {
-                background-color: #d10e00; /* Red */
+                background-color: #B30838; /* Red */
                 border: black;
                 border-radius: 15px;
                 color: white;
@@ -111,7 +111,7 @@
                                             <h2 class="altMaintitle">{{ supervising.user }}</h2>
                                             {% for eval in all_evaluations %}                
                                                 {% if studentProfile.student_ID == eval.stud_id %}
-                                                    <p><a href="/firstEvaluation/{{ eval.id }}"><button class="button"> student id: {{ eval.stud_id }}, test id: {{ eval.id }}</button></a></p>
+                                                    <p><a href="/Evaluation/{{ eval.id }}"><button class="button"> student id: {{ eval.stud_id }}, test id: {{ eval.id }}</button></a></p>
                                                 {% endif %}                
                                             {% endfor %}                           
                                         </div>

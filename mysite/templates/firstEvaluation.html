@@ -14,11 +14,11 @@
     <h1>Evaluation</h1>
     <br>
 
-    <form action="/firstEvaluation/" method="post">
+    <form action="/Evaluation/" method="post">
         <img src="{% static 'images/logo.jpg' %}" class="img-fluidrounded-start" alt="Logo Image">
         {% csrf_token %}
         {{form.as_p}}
-        <a href="firstEvaluation/questions/">
+        <a href="Evaluation/questions/">
             <button type="submit", name="save">Save Evaluation</button>
         </a>
     </form>

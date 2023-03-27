@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.template import loader
 from django.http import HttpResponse
-from .forms import firstEvaluationForm #CreateUserForm
-from .models import firstEvaluation
+from .forms import EvaluationForm #CreateUserForm
+from .models import Evaluation
 from .models import Profile, User
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -42,7 +42,7 @@ def sendNoticeEmail(recipients, submitID):
 def evaluationPage(response):
     if response.user.is_authenticated:
         if response.method == "POST":
-            form = firstEvaluationForm(response.POST)
+            form = EvaluationForm(response.POST)
             if form.is_valid():
                 f = form.cleaned_data["first_Name"]
                 l = form.cleaned_data["last_Name"]
@@ -81,12 +81,12 @@ def evaluationPage(response):
                         abool = 1
                 if abool == 0:
                     return HttpResponse("Please enter a real student id") #make a html template for this
-                q = firstEvaluation(first_Name = f, last_Name = l, stud_id = s, Evaluation_Number = e, date = d, Pedagogy_A = q1a, Pedagogy_B = q1b, Pedagogy_C = q1c, Pedagogy_D = q1d, Pedagogy_E = q2e, Pedagogy_F = q2f, Pedagogy_G = q2g, Pedagogy_H = q2h, Pedagogy_I = q2i, Pedagogy_J = q3j, Pedagogy_K = q3k, Pedagogy_L = q3l, Pedagogy_M = q4m, Disposition_A = q5a, Disposition_B = q5b, Disposition_C = q5c, Disposition_D = q5d, Disposition_E = q5e, Disposition_F = q6f, Disposition_G = q6g, Disposition_H = q7h, comment = com, user=su)
+                q = Evaluation(first_Name = f, last_Name = l, stud_id = s, Evaluation_Number = e, date = d, Pedagogy_A = q1a, Pedagogy_B = q1b, Pedagogy_C = q1c, Pedagogy_D = q1d, Pedagogy_E = q2e, Pedagogy_F = q2f, Pedagogy_G = q2g, Pedagogy_H = q2h, Pedagogy_I = q2i, Pedagogy_J = q3j, Pedagogy_K = q3k, Pedagogy_L = q3l, Pedagogy_M = q4m, Disposition_A = q5a, Disposition_B = q5b, Disposition_C = q5c, Disposition_D = q5d, Disposition_E = q5e, Disposition_F = q6f, Disposition_G = q6g, Disposition_H = q7h, comment = com, user=su)
                 q.save()
                 # emailSender(response)
             return render(response, "submissionSuccess.html", {"form":form})
         else:
-            form = firstEvaluationForm()
+            form = EvaluationForm()
         return render(response, "evalQuestions.html", {"form":form})
     else:
         messages.success(response, ("You must be logged in to view this page."))
@@ -96,7 +96,7 @@ def evaluationPage(response):
 def listOfEvals(request):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=request.user.id)
-        all_evaluations = firstEvaluation.objects.all()
+        all_evaluations = Evaluation.objects.all()
         all_profiles = Profile.objects.all()
         template = loader.get_template('evalList.html')
         context = {
@@ -111,12 +111,12 @@ def listOfEvals(request):
 
 def evaluationDetails(request, stud_id):
     try:
-        eval = firstEvaluation.objects.get(id=stud_id)
+        eval = Evaluation.objects.get(id=stud_id)
         template = loader.get_template('evaluationDetails.html')
         context = {
             'eval' : eval,
         }
-    except firstEvaluation.DoesNotExist:
+    except Evaluation.DoesNotExist:
         raise Http404("Evaluation does not exist")
     return HttpResponse(template.render(context, request))
 
@@ -131,7 +131,7 @@ def profile_list(request):
 def profile(request, pk):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=pk)
-        evaluations = firstEvaluation.objects.filter(user_id=pk)
+        evaluations = Evaluation.objects.filter(user_id=pk)
         return render(request, "profile.html", {"profile": profile, "evaluations": evaluations})
     else:
         messages.success(request, ("You must be logged in to view this page."))

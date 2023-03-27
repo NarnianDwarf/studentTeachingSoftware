@@ -31,7 +31,7 @@ YEARS = [x for x in range(2020,2030)]
 #         model = User
 #         fields = ['username', 'email', 'password1', 'password2']
 
-class firstEvaluationForm(forms.Form):
+class EvaluationForm(forms.Form):
     first_Name = forms.CharField(label = "First Name", max_length = 200)
     last_Name = forms.CharField(label = "Last Name", max_length = 200)
     stud_id = forms.IntegerField(required = True, label = "Student ID")

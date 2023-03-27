@@ -27,7 +27,20 @@
                 color: rgb(104, 6, 6);
             }
 
-
+            .endButton {
+                background-color: #B30838; /* Red */
+                border: black;
+                border-radius: 15px;
+                color: white;
+                padding: 10px 15px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;
+                margin: 10px 5px;
+                cursor: pointer;
+                align-items: center;
+            }
         </style>
 
     </head>
@@ -38,28 +51,28 @@
             <div class="d-flex justify-content-center h-100">
                 <div class="eval_card">
                     <h2 class="thisText">Evaluation of {{eval.user}}</h2>
-                    <h4>Evaluation id: {{ eval.id }}</h4>
-                    <p>question1a: {{eval.question1a}}</p>
-                    <p>question1b: {{eval.question1b}}</p>
-                    <p>question1c: {{eval.question1c}}</p>
-                    <p>question1d: {{eval.question1d}}</p>
-                    <p>question2e: {{eval.question2e}}</p>
-                    <p>question2f: {{eval.question2f}}</p>
-                    <p>question2g: {{eval.question2g}}</p>
-                    <p>question2h: {{eval.question2h}}</p>
-                    <p>question2i: {{eval.question2i}}</p>
-                    <p>question3j: {{eval.question3j}}</p>
-                    <p>question3k: {{eval.question3k}}</p>
-                    <p>question3l: {{eval.question3l}}</p>
-                    <p>question4m: {{eval.question4m}}</p>
-                    <p>question5a: {{eval.question5a}}</p>
-                    <p>question5b: {{eval.question5b}}</p>
-                    <p>question5c: {{eval.question5c}}</p>
-                    <p>question5d: {{eval.question5d}}</p>
-                    <p>question5e: {{eval.question5e}}</p>
-                    <p>question6f: {{eval.question6f}}</p>
-                    <p>question6g: {{eval.question6g}}</p>
-                    <p>question7h: {{eval.question7h}}</p>
+                    <h4>Evaluation ID: {{ eval.id }}</h4>
+                    <p>Pedagogy A: {{eval.Pedagogy_A}}</p>
+                    <p>Pedagogy B: {{eval.Pedagogy_B}}</p>
+                    <p>Pedagogy C: {{eval.Pedagogy_C}}</p>
+                    <p>Pedagogy D: {{eval.Pedagogy_D}}</p>
+                    <p>Pedagogy E: {{eval.Pedagogy_E}}</p>
+                    <p>Pedagogy F: {{eval.Pedagogy_F}}</p>
+                    <p>Pedagogy G: {{eval.Pedagogy_G}}</p>
+                    <p>Pedagogy H: {{eval.Pedagogy_H}}</p>
+                    <p>Pedagogy I: {{eval.Pedagogy_I}}</p>
+                    <p>Pedagogy J: {{eval.Pedagogy_J}}</p>
+                    <p>Pedagogy K: {{eval.Pedagogy_K}}</p>
+                    <p>Pedagogy L: {{eval.Pedagogy_L}}</p>
+                    <p>Pedagogy M: {{eval.Pedagogy_M}}</p>
+                    <p>Disposition A: {{eval.Disposition_A}}</p>
+                    <p>Disposition B: {{eval.Disposition_B}}</p>
+                    <p>Disposition C: {{eval.Disposition_C}}</p>
+                    <p>Disposition D: {{eval.Disposition_D}}</p>
+                    <p>Disposition E: {{eval.Disposition_E}}</p>
+                    <p>Disposition F: {{eval.Disposition_F}}</p>
+                    <p>Disposition G: {{eval.Disposition_G}}</p>
+                    <p>Disposition H: {{eval.Disposition_H}}</p>
                     <p>comment: {{eval.comment}}</p>
             
                 </div>
@@ -67,7 +80,7 @@
         </div>
 
         <!-- {{ eval }} -->
-        
+        <a href="{% url 'listOfEvals' %}"><button class="endButton">Return to Evaluation List</button></a> <br/>
     </body>
     
 </html>

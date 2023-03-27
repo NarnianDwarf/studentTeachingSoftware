@@ -25,7 +25,7 @@ EVALUATION_NUMBER = (
     (4, '4'),
 )
 
-class firstEvaluation(models.Model):
+class Evaluation(models.Model):
     first_Name = models.CharField(db_column = 'First Name', max_length = 200, default = "Enter First Name")
     last_Name = models.CharField(db_column = 'Last Name', max_length = 200, default = "Enter Last Name")
     stud_id = models.IntegerField(db_column = 'Student ID', default = 0)
@@ -57,13 +57,13 @@ class firstEvaluation(models.Model):
     Disposition_H = models.IntegerField(choices = QUESTION_CHOICES, default = 0)
     comment = models.CharField(max_length = 1000, default = "")
     user = models.ForeignKey(
-        User, related_name="firstEvaluation",
+        User, related_name="Evaluation",
         on_delete=models.DO_NOTHING,
         default=1,
     )
 
     # class Meta:
-    #     db_table = 'FirstEval'
+    #     db_table = 'Eval'
 
     def __str__(self):
         return self.first_Name + ' - ' + self.last_Name

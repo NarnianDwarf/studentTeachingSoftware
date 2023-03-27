@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
-from .models import firstEvaluation, Profile
+from .models import Evaluation, Profile
 from import_export import resources
 # from import_export.admin import ExportActionMixin
 from import_export.admin import ImportExportModelAdmin
@@ -22,23 +22,23 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
 
-# class FirstEvaluationResource(resources.ModelResource):
+# class EvaluationResource(resources.ModelResource):
 #     # full_title = Field()
 
 #     class Meta:
-#         model = firstEvaluation
+#         model = Evaluation
 
 #     def dehydrate_full_title(self):
-#         first_name = getattr(firstevaluation.fname, "name", "unknown")
-#         last_name = getattr(firstevaluation.lname, "name", "unknown")
-#         stud = getattr(firstevaluation.stud_id, "Id", "unknown")
+#         first_name = getattr(evaluation.fname, "name", "unknown")
+#         last_name = getattr(evaluation.lname, "name", "unknown")
+#         stud = getattr(evaluation.stud_id, "Id", "unknown")
 #         return '%s %s - %s' % (first_name, last_name, stud)
 
-# class FirstEvaluationAdmin(ExportActionMixin, admin.ModelAdmin):
-#     # resources_classes = [FirstEvaluationResource]
-#     First_Name = getattr(firstEvaluation, "fname")
-#     Last_Name = getattr(firstEvaluation, "lname")
-#     Student_ID = getattr(firstEvaluation, "stud_id")
+# class EvaluationAdmin(ExportActionMixin, admin.ModelAdmin):
+#     # resources_classes = [EvaluationResource]
+#     First_Name = getattr(Evaluation, "fname")
+#     Last_Name = getattr(Evaluation, "lname")
+#     Student_ID = getattr(Evaluation, "stud_id")
 #     list_display = ('First_Name', 'Last_Name', 'Student_ID')
 
 def name(obj):
@@ -47,21 +47,32 @@ def name(obj):
 def date_submitted(obj):
     return("%s" % (obj.date))
 
-class FirstEvaluationAdmin(ImportExportModelAdmin):
-    model = firstEvaluation
-    list_display = (name, date_submitted)
+def evaluation_number(obj):
+    return("%s" % (obj.Evaluation_Number))
 
-def export_selected_objects(modeladmin, request, queryset):
-    selected = queryset.values_list('pk', flat=True)
-    ct = ContentType.objects.get_for_model(queryset.model)
-    # return HttpResponseRedirect('/export/?ct=%s&ids=%s' % (
-    #     ct.pk,
-    #     ','.join(str(pk) for pk in selected),
-    # ))
+class EvaluationAdmin(ImportExportModelAdmin):
+    model = Evaluation
+    list_display = (name, date_submitted, evaluation_number)
+    # https://docs.djangoproject.com/en/4.1/ref/models/options/
+    # ordering = [Evaluation('last_Name')]
+    # Evaluation.objects.all().order_by('Evaluation_Number', 'date', 'last_Name').values()
+    # def get_queryset(self, request):
+    #     qs = super().get_queryset(request)
+    #     qs = qs.annotate(models.Count('order'))
+    #     return qs
+    # def number
 
-admin.site.add_action(export_selected_objects)
-admin.site.register(firstEvaluation, FirstEvaluationAdmin)
-# admin.site.register(firstEvaluation)
+# def export_selected_objects(modeladmin, request, queryset):
+#     selected = queryset.values_list('pk', flat=True)
+#     ct = Evaluation.objects.get_for_model(queryset.model)
+#     return HttpResponseRedirect('?user_id=%s' % (
+#         # ct.pk,
+#         ','.join(str(pk) for pk in selected),
+#     ))
+
+# admin.site.add_action(export_selected_objects)
+admin.site.register(Evaluation, EvaluationAdmin)
+# admin.site.register(Evaluation)
 # admin.site.register(Profile)
 
 #mix user and profile info
