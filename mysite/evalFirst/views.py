@@ -76,8 +76,7 @@ def evaluationPage(response):
                 abool = 0
                 for i in inquiry:
                     if i.student_ID == s:
-                        u = Profile.objects.get(student_ID=s)
-                        su = User.objects.get(id=u.user_id)
+                        su = User.objects.get(id=s)
                         abool = 1
                 if abool == 0:
                     return HttpResponse("Please enter a real student id") #make a html template for this
@@ -96,13 +95,13 @@ def evaluationPage(response):
 def listOfEvals(request):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=request.user.id)
+        all_users = User.objects.all()
         all_evaluations = Evaluation.objects.all()
-        all_profiles = Profile.objects.all()
         template = loader.get_template('evalList.html')
         context = {
             'all_evaluations' : all_evaluations,
             'profile' : profile,
-            'all_profiles' : all_profiles,
+            'all_users' : all_users,
         }
         return HttpResponse(template.render(context, request))
     else:

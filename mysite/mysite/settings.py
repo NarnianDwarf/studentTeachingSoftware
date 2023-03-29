@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#email settings
+# email settings
 # DEFAULT_FROM_EMAIL = 'cooney01134@gmail.com'
 # SERVER_EMAIL = 'cooney01134@gmail.com'
 # EMAIL_USE_TLS = True
