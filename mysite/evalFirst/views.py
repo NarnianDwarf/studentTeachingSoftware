@@ -46,7 +46,7 @@ def evaluationPage(response):
             if form.is_valid():
                 f = form.cleaned_data["first_Name"]
                 l = form.cleaned_data["last_Name"]
-                s = form.cleaned_data['stud_id']
+                s = form.cleaned_data['portal_id']
                 e = form.cleaned_data['Evaluation_Number']
                 d = form.cleaned_data['date']
                 q1a = form.cleaned_data['Pedagogy_A']
@@ -80,7 +80,7 @@ def evaluationPage(response):
                         abool = 1
                 if abool == 0:
                     return HttpResponse("Please enter a real student id") #make a html template for this
-                q = Evaluation(first_Name = f, last_Name = l, stud_id = s, Evaluation_Number = e, date = d, Pedagogy_A = q1a, Pedagogy_B = q1b, Pedagogy_C = q1c, Pedagogy_D = q1d, Pedagogy_E = q2e, Pedagogy_F = q2f, Pedagogy_G = q2g, Pedagogy_H = q2h, Pedagogy_I = q2i, Pedagogy_J = q3j, Pedagogy_K = q3k, Pedagogy_L = q3l, Pedagogy_M = q4m, Disposition_A = q5a, Disposition_B = q5b, Disposition_C = q5c, Disposition_D = q5d, Disposition_E = q5e, Disposition_F = q6f, Disposition_G = q6g, Disposition_H = q7h, comment = com, user=su)
+                q = Evaluation(first_Name = f, last_Name = l, portal_id = s, Evaluation_Number = e, date = d, Pedagogy_A = q1a, Pedagogy_B = q1b, Pedagogy_C = q1c, Pedagogy_D = q1d, Pedagogy_E = q2e, Pedagogy_F = q2f, Pedagogy_G = q2g, Pedagogy_H = q2h, Pedagogy_I = q2i, Pedagogy_J = q3j, Pedagogy_K = q3k, Pedagogy_L = q3l, Pedagogy_M = q4m, Disposition_A = q5a, Disposition_B = q5b, Disposition_C = q5c, Disposition_D = q5d, Disposition_E = q5e, Disposition_F = q6f, Disposition_G = q6g, Disposition_H = q7h, comment = com, user=su)
                 q.save()
                 # emailSender(response)
             return render(response, "submissionSuccess.html", {"form":form})

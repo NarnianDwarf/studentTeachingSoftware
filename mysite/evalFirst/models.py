@@ -28,7 +28,7 @@ EVALUATION_NUMBER = (
 class Evaluation(models.Model):
     first_Name = models.CharField(db_column = 'First Name', max_length = 200, default = "Enter First Name")
     last_Name = models.CharField(db_column = 'Last Name', max_length = 200, default = "Enter Last Name")
-    stud_id = models.IntegerField(db_column = 'Student ID', default = 0)
+    portal_id = models.IntegerField(db_column = 'Portal ID', default = 0)
     # fname = models.CharField(max_length = 200, default = "Enter First Name")
     # lname = models.CharField(max_length = 200, default = "Enter Last Name")
     # stud_id = models.IntegerField(default = 0)

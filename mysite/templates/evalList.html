@@ -13,7 +13,7 @@
             }
 
             .title_card {
-                width: 350px;
+                width: 500px;
                 margin-top: auto;
                 margin-bottom: auto;
                 background: #e4d3d3;
@@ -109,9 +109,9 @@
 
                                         <div class="d-flex justify-content-center">
                                             <h2 class="altMaintitle">{{ supervising.user }}</h2>
-                                            {% for eval in all_evaluations %}                
-                                                {% if studentProfile.student_ID == eval.stud_id %}
-                                                    <p><a href="/Evaluation/{{ eval.id }}"><button class="button"> student id: {{ eval.stud_id }}, test id: {{ eval.id }}</button></a></p>
+                                            {% for eval in all_evaluations %}          
+                                                {% if supervising.user_id == eval.portal_id %}
+                                                    <p><a href="/Evaluation/{{ eval.id }}"><button class="button"> Evaluation Number: {{ eval.Evaluation_Number }}</button></a></p>
                                                 {% endif %}                
                                             {% endfor %}                           
                                         </div>

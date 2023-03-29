@@ -34,7 +34,7 @@ YEARS = [x for x in range(2020,2030)]
 class EvaluationForm(forms.Form):
     first_Name = forms.CharField(label = "First Name", max_length = 200)
     last_Name = forms.CharField(label = "Last Name", max_length = 200)
-    stud_id = forms.IntegerField(required = True, label = "Student ID")
+    portal_id = forms.IntegerField(required = True, label = "Student-Teacher's Portal ID")
     Evaluation_Number = forms.ChoiceField(label = "Evaluation Number: ", choices = EVALUATION_NUMBER)
     date = forms.DateField(label = "Date", initial = "2023-01-01", widget = forms.SelectDateWidget(years = YEARS))
     Pedagogy_A = forms.ChoiceField(label = "A. Focus for Learning: Standards and Objectives/Targets", choices = QUESTION_CHOICES)
