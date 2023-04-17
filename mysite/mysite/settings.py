@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ixakrxtb8epij%ldndpp0er=v!ubk0pk14qg+#j&-3@m6j3)iz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["studentteacherevaluationportal.benedictine.edu"]
 
 
 # Application definition
@@ -120,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
@@ -132,7 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SERVER_EMAIL = 'cooney01134@gmail.com'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
+# EMAIL_PORT = 22
 # EMAIL_HOST_USER = 'cooney01134@gmail.com'
 # EMAIL_HOST_PASSWORD = 'amjmapbnzdbspecn'
 
