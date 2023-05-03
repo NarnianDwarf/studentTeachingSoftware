@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ixakrxtb8epij%ldndpp0er=v!ubk0pk14qg+#j&-3@m6j3)iz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["studentteacherevaluationportal.benedictine.edu"]
+ALLOWED_HOSTS = ["127.0.0.1", "studentteacherevaluationportal.benedictine.edu"]
 
 
 # Application definition
